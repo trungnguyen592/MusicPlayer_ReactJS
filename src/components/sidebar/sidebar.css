@@ -8,7 +8,9 @@
 }
 
 .pro5-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  width: 90%; /* Chiếm toàn bộ chiều rộng của sidebar */
+  height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ khung hình */
+  object-fit: cover;
+  border-radius: 30px;
+  margin-top: 10px;
 }

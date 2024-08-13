@@ -1,0 +1,30 @@
+a {
+  text-decoration: none !important;
+}
+.btn-body {
+  height: 80px;
+  width: 80px;
+  border-radius: 20px;
+  color: #f8c9d0;
+  display: flex; /* Sử dụng flexbox để căn giữa */
+  align-items: center; /* Căn giữa theo trục dọc */
+  justify-content: center; /* Căn giữa theo trục ngang */
+  flex-direction: column;
+  margin: 5px auto;
+  transition: all 0.2s ease;
+  background-color: rgba(244, 187, 146, 0.1);
+}
+
+.btn-body.active {
+  background-color: sandybrown;
+  color: #fff;
+  transform: scale(1.05);
+}
+.btn-body:hover {
+  color: #fff;
+}
+.btn-title {
+  margin: 4px auto;
+  font-weight: 600;
+  font-size: 14px;
+}
