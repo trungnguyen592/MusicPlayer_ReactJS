@@ -1,0 +1,17 @@
+/* songCard.css */
+.songCard-body {
+  display: flex;
+  flex-direction: column; /* Các phần tử sẽ được xếp theo hàng ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: space-between; /* Căn chỉnh các phần tử có khoảng cách hợp lý */
+  width: 100%;
+  height: 60%;
+  background-color: #27354d;
+  border-radius: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex; /* Đảm bảo các phần tử con cũng sử dụng flexbox nếu cần */
+}

@@ -9,26 +9,35 @@ import "../home/home.css";
 import Sidebar from "../../components/sidebar";
 import Login from "../auth/login";
 import { setClientToken } from "../../spotify";
+
 export default function Homepage() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
+    // Lấy token từ localStorage (nếu có)
+    const storedToken = window.localStorage.getItem("token");
+
+    // Lấy hash từ URL sau khi đăng nhập qua Spotify
     const hash = window.location.hash;
-    window.location.hash = "";
-    if (!token && hash) {
-      const _token = hash.split("&")[0].split("=")[1];
-      window.localStorage.setItem("token", _token);
-      setToken(_token);
-      setClientToken(_token);
-    } else {
-      setToken(token);
-      setClientToken(token);
+    window.location.hash = ""; // Xóa hash khỏi URL để gọn gàng
+
+    // Nếu chưa có token trong localStorage và có token trong hash
+    if (!storedToken && hash) {
+      const _token = new URLSearchParams(hash.substring(1)).get("access_token");
+      if (_token) {
+        window.localStorage.setItem("token", _token); // Lưu token vào localStorage
+        setToken(_token); // Lưu token vào state
+        setClientToken(_token); // Thiết lập token cho các yêu cầu API
+      }
+    } else if (storedToken) {
+      // Nếu token đã có trong localStorage, sử dụng nó
+      setToken(storedToken);
+      setClientToken(storedToken);
     }
   }, []);
 
   return !token ? (
-    <Login />
+    <Login /> // Nếu chưa có token, hiển thị trang đăng nhập
   ) : (
     <BrowserRouter>
       <div className="main-body">

@@ -2,7 +2,11 @@ import React from "react";
 import { loginEndpoint } from "../../spotify";
 import "./login.css";
 
-export default function Login() {
+const Login = () => {
+  const handleLogin = () => {
+    window.location.href = loginEndpoint; // Chuyển hướng người dùng đến trang đăng nhập Spotify
+  };
+
   return (
     <div className="login-page">
       <img
@@ -10,9 +14,12 @@ export default function Login() {
         alt="logo-spotify"
         className="logo"
       />
-      <a href={loginEndpoint}>
-        <div className="login-btn">LOG IN</div>
-      </a>
+      <h1 className="login-heading">Đăng nhập vào Spotify</h1>
+      <button className="login-btn" onClick={handleLogin}>
+        Đăng nhập Spotify
+      </button>
     </div>
   );
-}
+};
+
+export default Login;

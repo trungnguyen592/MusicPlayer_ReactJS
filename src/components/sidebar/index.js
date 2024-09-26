@@ -11,10 +11,18 @@ export default function Sidebar() {
     "https://i.pinimg.com/736x/b5/3c/8b/b53c8b947486580b32437faf19b00146.jpg"
   );
   useEffect(() => {
-    apiClient.get("me").then((response) => {
-      setImage(response.data.image[0].url);
-    });
+    apiClient
+      .get("me")
+      .then((response) => {
+        if (response.data.images && response.data.images.length > 0) {
+          setImage(response.data.images[0].url);
+        }
+      })
+      .catch((error) => {
+        console.error("Lỗi khi lấy dữ liệu người dùng:", error);
+      });
   }, []);
+
   return (
     <div className="sidebar-container">
       <img src={image} className="pro5-img" alt="pro5" />
